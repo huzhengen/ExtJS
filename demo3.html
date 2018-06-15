@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<link href="https://cdn.bootcss.com/extjs/3.4.1-1/resources/css/ext-all.css" rel="stylesheet">
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+<script src="https://cdn.bootcss.com/extjs/3.4.1-1/adapter/ext/ext-base.js"></script>
+<script src="https://cdn.bootcss.com/extjs/3.4.1-1/ext-all.js"></script>
+<script>
+Ext.onReady(function(){
+	var form = new Ext.form.FormPanel({
+		frame: true,
+		title: '表单标题',
+		style: 'margin:10px',
+		html: '<div style="padding:10px">这是表单内容</div>',
+	})
+	var win = new Ext.Window({
+		title: '窗口',
+		width: 500,
+		height: 300,
+		html: '<div>这里是内容</div>',
+		resizable: true,
+		modal: true,
+		closable: true,
+		maximizable: true,
+		minimizable: true,
+		items: form,
+	});
+	win.show();
+})
+</script>
+</body>
+</html>
