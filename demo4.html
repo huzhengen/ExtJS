@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<link href="https://cdn.bootcss.com/extjs/3.4.1-1/resources/css/ext-all.css" rel="stylesheet">
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+<script src="https://cdn.bootcss.com/extjs/3.4.1-1/adapter/ext/ext-base.js"></script>
+<script src="https://cdn.bootcss.com/extjs/3.4.1-1/ext-all.js"></script>
+<script>
+Ext.onReady(function(){
+	Ext.QuickTips.init();
+	Ext.form.Field.prototype.msgTarget = 'side';
+	var btnsubmitclick = function(){
+		Ext.MessageBox.alert('提示', '你点了确定按钮！')
+	}
+	var btnresetclick = function(){
+		Ext.MessageBox.alert('提示', '你点了重置按钮！')
+	}
+	var btnresetmouseover = function(){
+		Ext.MessageBox.alert('提示', '你鼠标悬停在了重置按钮上面!')
+	}
+	var btnsubmit = new Ext.Button({
+		text: '提交',
+		handler: btnsubmitclick,
+	})
+	var btnreset = new Ext.Button({
+		text: '重置',
+		listeners: {
+			// 'mouseover': btnresetmouseover,
+			'click': btnresetclick,
+		}
+	})
+	var txtusername = new Ext.form.TextField({
+		width: 140,
+		allowBlank: false,
+		maxLength: 10,
+		name: 'username',
+		fieldLabel: '用户名',
+		blankText: '请输入用户名',
+		maxLengthText: '用户名不能超过10个字符',
+	})
+	var txtpassword = new Ext.form.TextField({
+		width: 140,
+		allowBlank: false,
+		maxLength: 10,
+		inputType: 'password',
+		name: 'password',
+		fieldLabel: '密码',
+		blankText: '请输入密码',
+		maxLengthText: '密码不能超过10个字符',
+	})
+	var form = new Ext.form.FormPanel({
+		frame: true,
+		title: '表单标题',
+		style: 'margin:10px',
+		// html: '<div style="padding:10px">这是表单内容</div>',
+		items: [txtusername, txtpassword],
+		buttons: [btnsubmit, btnreset],
+	})
+	var win = new Ext.Window({
+		title: '窗口',
+		width: 500,
+		height: 300,
+		html: '<div>这里是内容</div>',
+		resizable: true,
+		modal: true,
+		closable: true,
+		maximizable: true,
+		minimizable: true,
+		buttonAlign: 'center',
+		items: form,
+	});
+	win.show();
+})
+</script>
+</body>
+</html>
